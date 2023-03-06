@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My GitHub Page</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<header>
+		<h1>My GitHub Page</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section>
+			<h2>Welcome to my GitHub Page!</h2>
+			<p>Here you can find out more about me and my projects.</p>
+		</section>
+		<section>
+			<h2>About Me</h2>
+			<p>Hi, my name is John Doe and I'm a web developer based in New York City.</p>
+		</section>
+		<section>
+			<h2>My RSS Feed</h2>
+			<ul id="rss-feed"></ul>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 John Doe</p>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$.ajax({
+				url: "https://api.rss2json.com/v1/api.json?rss_url=https://g0v.social/@dale.rss",
+				method: "GET",
+				success: function(data) {
+					console.log(data);
+					for (var i = 0; i < data.items.length; i++) {
+						var item = "<li><a href='" + data.items[i].link + "'>" + data.items[i].title + "</a></li>";
+						$("#rss-feed").append(item);
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>
