@@ -1,52 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>My Minimalist Website</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<title>Guild Name Generator</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<header>
-		<h1>My Minimalist Website</h1>
-	</header>
-	<main>
-		<section>
-			<h2>About Me</h2>
-			<p>
-				<span id="about-me"></span>
-			</p>
-		</section>
-		<section>
-			<h2>My Hobbies</h2>
-			<ul id="hobbies"></ul>
-		</section>
-	</main>
-	<footer>
-		<p>&copy; 2023 My Minimalist Website</p>
-	</footer>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			$.ajax({
-				url: "data/about-me.txt",
-				method: "GET",
-				success: function(data) {
-					$("#about-me").text(data);
-				}
-			});
+	<h1>Guild Name Generator</h1>
+	<button id="generate-btn">Generate Guild Name</button>
+	<div id="guild-name"></div>
 
-			$.ajax({
-				url: "data/hobbies.txt",
-				method: "GET",
-				success: function(data) {
-					var hobbies = data.split("\n");
-					for (var i = 0; i < hobbies.length; i++) {
-						var hobby = "<li>" + hobbies[i] + "</li>";
-						$("#hobbies").append(hobby);
-					}
-				}
-			});
-		});
-	</script>
+	<script src="script.js"></script>
 </body>
 </html>
